@@ -210,14 +210,14 @@ function App() {
       description: "Contemporary fashion e-commerce platform showcasing men's clothing, accessories, and travel gear with modern aesthetics.",
       url: "https://j0meqd-r2.myshopify.com/",
       category: "Fashion & Lifestyle",
-      image: "/Project3.png"
+      image: "/Project4.png"
     },
     {
       title: "Ariana Store",
       description: "Beauty and makeup e-commerce store with sophisticated product displays and organized cosmetic collections.",
       url: "https://1490db-fa.myshopify.com/",
       category: "Beauty & Cosmetics",
-      image: "/Project4.png"
+      image: "/Project3.png"
     }
   ]
 
@@ -301,6 +301,7 @@ function App() {
       <nav className="navbar">
         <div className="nav-container">
           <div className="nav-logo">
+            
             <span className="logo-text">Ebubechukwu</span>
           </div>
           <div className={`nav-menu ${isMobileMenuOpen ? 'nav-menu-open' : ''}`}>
