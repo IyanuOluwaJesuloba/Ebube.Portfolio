@@ -1,6 +1,11 @@
 {
+  "framework": "vite",
   "buildCommand": "npm run build:vercel",
   "outputDirectory": "dist",
-  "framework": null,
-  "installCommand": "npm install"
+  "installCommand": "npm ci --prefer-offline --no-audit",
+  "build": {
+    "env": {
+      "NODE_OPTIONS": "--max-old-space-size=4096"
+    }
+  }
 }

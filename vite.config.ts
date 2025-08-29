@@ -7,11 +7,15 @@ export default defineConfig({
   root: '.',
   build: {
     outDir: 'dist',
+    minify: 'esbuild',
+    target: 'es2015',
+    sourcemap: false,
     rollupOptions: {
-      input: {
-        main: './index.html'
-      }
+      input: './index.html'
     }
+  },
+  esbuild: {
+    target: 'es2015'
   },
   server: {
     port: 3000
