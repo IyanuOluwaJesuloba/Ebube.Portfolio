@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect} from 'react'
 import { 
   ShoppingBag, 
   Zap, 
@@ -19,16 +19,15 @@ import {
 import './App.css'
 
 // Page Transition Component
-const PageTransition = ({ isActive }: { isActive: boolean }) => {
-  return <div className={`page-transition ${isActive ? 'enter' : 'exit'}`}></div>;
-};
+// const PageTransition = ({ isActive }: { isActive: boolean }) => {
+//   return <div className={`page-transition ${isActive ? 'enter' : 'exit'}`}></div>;
+// };
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  const nextSectionRef = useRef<string>('home')
+  // const nextSectionRef = useRef<string>('home')
 
   // Handle navigation clicks with smooth scrolling
   const handleNavClick = (sectionId: string) => {
@@ -189,7 +188,7 @@ function App() {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('mousemove', handleMouseMove)
     }
-  }, [])
+  }, [activeSection])
 
   const portfolioProjects = [
     {
@@ -297,7 +296,7 @@ function App() {
       
       {/* Navigation */}
       {/* Page Transition */}
-      {isTransitioning && <PageTransition isActive={true} />}
+      {/* {isTransitioning && <PageTransition isActive={true} />} */}
       
       <nav className="navbar">
         <div className="nav-container">
