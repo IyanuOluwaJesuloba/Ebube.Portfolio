@@ -30,6 +30,15 @@ function App() {
   const [isTransitioning, setIsTransitioning] = useState(false)
   const nextSectionRef = useRef<string>('home')
 
+  // Handle navigation clicks with smooth scrolling
+  const handleNavClick = (sectionId: string) => {
+    setIsMobileMenuOpen(false)
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   useEffect(() => {
     setIsLoaded(true)
     
@@ -92,11 +101,20 @@ function App() {
             const animation = element.dataset.animation || 'fade-in'
             const delay = element.dataset.delay || '0'
             
-            element.style.opacity = '0'
-            setTimeout(() => {
-              element.classList.add(`animate-${animation}`)
-              element.style.opacity = ''
-            }, parseInt(delay))
+            // Special handling for typing animation
+            if (element.classList.contains('animate-typing')) {
+              element.style.opacity = '1'
+              element.style.width = '0'
+              setTimeout(() => {
+                element.style.width = '100%'
+              }, parseInt(delay))
+            } else {
+              element.style.opacity = '0'
+              setTimeout(() => {
+                element.classList.add(`animate-${animation}`)
+                element.style.opacity = '1'
+              }, parseInt(delay))
+            }
             
             observer.unobserve(element)
           }
@@ -104,6 +122,13 @@ function App() {
       }, { threshold: 0.1 })
       
       animatedElements.forEach(element => {
+        // Initialize typing elements
+        if (element.classList.contains('animate-typing')) {
+          (element as HTMLElement).style.opacity = '1'
+          ;(element as HTMLElement).style.width = '0'
+        } else {
+          (element as HTMLElement).style.opacity = '0'
+        }
         observer.observe(element)
       })
     }
@@ -436,9 +461,9 @@ function App() {
           </div>
           <div className="portfolio-grid">
             {portfolioProjects.map((project, index) => (
-              <div key={index} className="portfolio-item scroll-animate" data-animation="fade-in" data-delay={`${index * 150}`}>
-                <div className="portfolio-item-inner">
-                  <div className="portfolio-item-front">
+              <div key={index} className="" data-animation="fade-in" >
+                <div className="">
+                  <div className="">
                     <div className="portfolio-image">
                       <img src={project.image} alt={project.title} className="hover-pulse" />
                       <div className="portfolio-overlay">
@@ -449,7 +474,7 @@ function App() {
                       </div>
                     </div>
                   </div>
-                  <div className="portfolio-item-back">
+                  <div className="">
                     <span className="portfolio-category">{project.category}</span>
                     <h3 className="portfolio-title">{project.title}</h3>
                     <p className="portfolio-description">{project.description}</p>

@@ -323,6 +323,7 @@
   animation: 
     typing 3.5s steps(40, end) forwards,
     blink-caret .75s step-end infinite;
+  transition: width 3.5s steps(40, end);
 }
 
 /* Hover Animation Classes */
@@ -1090,13 +1091,16 @@ section:hover::before {
   overflow: hidden;
   box-shadow: var(--shadow-medium);
   transition: var(--transition);
-  animation: fadeInUp 0.6s ease-out forwards;
-  opacity: 1; /* Changed from 0 to make items visible */
-  transform: translateY(0); /* Changed from 30px to remove initial offset */
+  opacity: 1;
+  transform: translateY(30px);
   cursor: pointer;
   position: relative;
   perspective: 1000px;
   height: 300px;
+}
+
+.portfolio-item.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 .portfolio-item-inner {
@@ -1189,7 +1193,7 @@ section:hover::before {
 }
 
 .portfolio-link {
-  color: white;
+  color: rgb(202, 154, 238);
   text-decoration: none;
   font-weight: 600;
   padding: 0.75rem 1.5rem;
@@ -1202,7 +1206,7 @@ section:hover::before {
 }
 
 .portfolio-link:hover {
-  background: white;
+  background: rgb(175, 13, 245);
   color: var(--primary-color);
   transform: scale(1.05);
 }
@@ -1252,12 +1256,15 @@ section:hover::before {
   text-align: center;
   box-shadow: var(--shadow-medium);
   transition: var(--transition);
-  animation: fadeInUp 0.6s ease-out forwards;
   opacity: 0;
   transform: translateY(30px);
   cursor: pointer;
   position: relative;
   overflow: hidden;
+}
+
+.service-item.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 .service-item::before {
